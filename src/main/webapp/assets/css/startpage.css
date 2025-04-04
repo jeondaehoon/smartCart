@@ -1,0 +1,115 @@
+body {
+    font-family: 'Pretendard', sans-serif;
+}
+
+.text-member {
+    font-size: 48px;
+    font-weight: 400; /* 기본은 Regular */
+    text-align: left; /* 좌측 정렬 */
+    margin-left: 100px; /* 왼쪽 여백 추가 */
+    margin-top: 192px;
+    line-height: 1.4; /* 줄 간격 조정 */
+}
+
+.text-member strong {
+    font-weight: 800; /* Extrabold */
+}
+
+.text-nonmember {
+    font-size: 48px;
+    font-weight: 400; /* 기본은 Regular */
+    text-align: left; /* 좌측 정렬 */
+    margin-left: 100px; /* 왼쪽 여백 추가 */
+    margin-top: 250px;
+    line-height: 1.4; /* 줄 간격 조정 */
+}
+
+.text-nonmember strong {
+    font-weight: 800; /* Extrabold */
+}
+
+.btn-member {
+    width: 300px;
+    height: 100px;
+    font-size: 36px;
+    font-weight: 700; /* Bold */
+    background-color: #171717; /* 파란색 */
+    color: #ffffff; /* 흰색 */
+    border: none;
+    border-radius: 8px; /* 모서리 둥글게 */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 100px;
+}
+
+.btn-nonmember {
+    width: 300px;
+    height: 100px;
+    font-size: 36px;
+    font-weight: 700; /* Bold */
+    background-color: #ffffff; /* 짙은 회색 */
+    color: #000000; /* 흰색 */
+    border: 3px solid #000000; /* 검은색 테두리, 두께 3px */
+    border-radius: 8px; /* 모서리 둥글게 */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 100px;
+}
+
+.right-box {
+    width: 620px;
+    height: 140px;
+    background-color: #ffffff; /* 흰색 배경 */
+    border: 3px solid #000000; /* 검은색 테두리 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    position: absolute;
+    right: 100px; /* 오른쪽 여백 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box-text {
+    font-size: 24px; /* 폰트 크기 */
+    font-weight: 400; /* 기본적으로 Regular */
+    line-height: 1.4;
+    margin-left: 20px;
+}
+
+.box-text strong {
+    font-weight: bold; /* 숫자 부분을 Bold */
+}
+
+.box-text span {
+    font-weight: bold; /* "회원 & 비회원" 부분을 Bold */
+}
+
+
+.box-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 40px;
+}
+
+/* 위치 조정 */
+.right-box:nth-of-type(1) { top: 190px; }
+.right-box:nth-of-type(2) { top: 410px; }
+.right-box:nth-of-type(3) { top: 630px; }
+.right-box:nth-of-type(4) { top: 860px; }
+
+
+
+
+
+
+@media (max-width: 1366px) {
+    .text-member {
+        font-size: 42px;
+    }
+}

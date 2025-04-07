@@ -24,7 +24,7 @@
 <div class="right-box-container">
     <div class="right-box">
         <span class="box-text">
-            <strong>01</strong><br>
+            01<br>
             <span>회원 & 비회원</span> 모두 사용 가능!
         </span>
         <svg class="box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,8 +34,8 @@
     </div>
     <div class="right-box">
         <span class="box-text">
-            <strong>01</strong><br>
-            <span>회원 & 비회원</span> 모두 사용 가능!
+            02<br>
+            회원은 <span>간편결제</span> 및 <span>포인트 결제</span> 지원
         </span>
         <svg class="box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2"/>
@@ -44,8 +44,8 @@
     </div>
     <div class="right-box">
         <span class="box-text">
-            <strong>01</strong><br>
-            회원 & 비회원 모두 사용 가능!
+            03<br>
+            <span>현금 결제 불가</span> 카드 및 보바일 결제만 가능
         </span>
         <svg class="box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2"/>
@@ -54,8 +54,8 @@
     </div>
     <div class="right-box">
         <span class="box-text">
-            <strong>01</strong><br>
-            회원 & 비회원 모두 사용 가능!
+            04<br>
+            쉽고 편리한 <span>스마트 마트 카트</span>로 더 빠른 쇼핑!
         </span>
         <svg class="box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" stroke="black" stroke-width="2"/>

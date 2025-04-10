@@ -12,7 +12,7 @@
     <strong>아래 회원 버튼</strong>을 눌러주세요
 </p>
 
-<button type="button" class="btn-member">회원</button>
+<button type="button" class="btn-member" onclick="location.href='/smartCart_login'">회원</button>
 
 <p class="text-nonmember">
     <strong>비회원이</strong>신 경우<br>

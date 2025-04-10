@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartcart.login.dao.loginDao">
+
+    <resultMap id="loginResultMap" type="vo.userVO.UserVO">
+        <result property="userName" column="USER_NAME"/>
+        <result property="userPhone" column="USER_PHONE"/>
+        <result property="createdAt" column="CREATED_AT"/>
+        <result property="updateAt" column="UPDATE_AT"/>
+        <result property="isActive" column="IS_ACTIVE"/>
+        <result property="birthDate" column="BIRTH_DATE"/>
+        <result property="gender" column="GENDER"/>
+        <result property="email" column="EMAIL"/>
+        <result property="address" column="ADDRESS"/>
+    </resultMap>
+
+    <!-- 로그인용 조회 -->
+    <select id="getLogin" resultMap="loginResultMap">
+        SELECT USER_PHONE
+        FROM T_USER_INFO
+        WHERE USER_PHONE = #{userPhone}
+    </select>
+
+
+</mapper>

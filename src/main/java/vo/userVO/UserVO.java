@@ -4,15 +4,13 @@ import lombok.Data;
 
 @Data
 public class UserVO {
+    private String userId;
     private String userName;
-    private String userPhone;
+    private String password;
+    private String point;
     private String createdAt;
-    private String updateAt;
-    private String isActive;
-    private String birthDate;
-    private String gender;
-    private String email;
-    private String address;
+    private String lastLogin;
+    private String status;
 
     private String url;
 }

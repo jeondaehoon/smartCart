@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vo.userVO.UserVO;
 import com.smartcart.login.service.loginService;
@@ -23,13 +24,13 @@ public class loginController {
 
     @RequestMapping("/smartCart_phonelogin")
     @ResponseBody
-    public boolean getLogin(@ModelAttribute UserVO vo) throws Exception{
+    public boolean getLogin(@RequestParam String userPhone) throws Exception {
+        UserVO vo = new UserVO();
+        vo.setUserId(userPhone);
+
         UserVO uvo = service.getLogin(vo);
-        if(uvo != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return uvo != null;
     }
+
 
 }

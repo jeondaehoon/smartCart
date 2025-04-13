@@ -1,9 +1,9 @@
 package com.smartcart.login.dao;
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 import vo.userVO.UserVO;
 
-@Repository
+@Mapper
 public interface loginDao {
 
     public UserVO getLogin(UserVO vo) throws Exception;

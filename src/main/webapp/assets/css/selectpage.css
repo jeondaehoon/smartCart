@@ -1,0 +1,329 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: #343a40;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.flex-container {
+    display: flex;
+    height: calc(100% - 60px);
+}
+
+/* 검색창 */
+.search-container {
+    position: relative;
+    width: 300px; /* 검색창 너비 고정 */
+    margin-bottom: 15px;
+    height: 50px;
+    margin-left: 0;
+    float: none;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f1f3f5;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(72, 143, 255, 0.2);
+    background-color: #fff;
+}
+
+.clear-button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #adb5bd;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.clear-button:hover {
+    color: #495057;
+}
+
+/* 메인 레이아웃 */
+.main-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+}
+
+/* 카테고리 섹션 */
+.category-section {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 5px;
+    scrollbar-width: thin;
+}
+
+.category-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.category-section::-webkit-scrollbar-thumb {
+    background-color: #dee2e6;
+    border-radius: 3px;
+}
+
+.category-button {
+    width: 130px;
+    height: 130px;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    color: #495057;
+}
+
+.category-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-button.active {
+    background-color: #4dabf7;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 8px 15px rgba(77, 171, 247, 0.25);
+}
+
+/* 상품 섹션 */
+.product-section {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.product-section::-webkit-scrollbar-thumb {
+    background-color: #dee2e6;
+    border-radius: 3px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.product-card {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #74c0fc, #4dabf7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+.product-name {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #343a40;
+}
+
+.product-price {
+    color: #495057;
+    font-size: 16px;
+    margin-top: auto;
+    text-align: right;
+    font-weight: 500;
+}
+
+/* 장바구니 섹션 */
+.cart-section {
+    width: 450px;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    height: 100%; /* 전체 높이로 복원 */
+    margin-top: 0; /* 상단 여백 제거 */
+}
+
+.cart-title {
+    margin: 0;
+    padding: 20px 25px;
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #4dabf7;
+    color: white;
+    flex-shrink: 0;
+}
+
+.cart-items {
+    padding: 25px;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.cart-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+    background-color: #dee2e6;
+    border-radius: 3px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.cart-item:hover {
+    background-color: #f1f3f5;
+}
+
+.cart-footer {
+    padding: 25px;
+    background-color: white;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.cart-date {
+    color: #868e96;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.total-price {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: right;
+    color: #343a40;
+    margin-bottom: 25px;
+}
+
+.payment-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.payment-button {
+    flex: 1;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.card-payment {
+    background-color: #4dabf7;
+    color: white;
+    box-shadow: 0 4px 10px rgba(77, 171, 247, 0.25);
+}
+
+.point-payment {
+    background-color: #ffd43b;
+    color: #343a40;
+    box-shadow: 0 4px 10px rgba(255, 212, 59, 0.25);
+}
+
+.payment-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-payment:hover {
+    background-color: #339af0;
+}
+
+.point-payment:hover {
+    background-color: #fcc419;
+}

@@ -1,10 +1,16 @@
 body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: #343a40;
 }
 
 @media (max-width: 1366px) {
     .text-member {
-        font-size: 42px;
+        font-size: 40px;
     }
 }
 
@@ -12,12 +18,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 100px;
-    gap: 80px;
+    padding: 80px;
+    gap: 100px;
+    max-width: 1366px;
+    margin: 0 auto;
+    height: calc(100vh - 160px);
 }
 
 .left-section {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .right-section {
@@ -25,106 +37,163 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    position: relative;
 }
 
 .main-text {
-    font-size: 48px;
-    font-weight: 400;
+    font-size: 46px;
+    font-weight: 600;
     text-align: left;
-    margin-top: 100px;
+    margin-top: 80px;
     line-height: 1.4;
+    color: #343a40;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .left-bottom {
     display: flex;
     align-items: flex-start;
-    margin-top: 100px;
+    margin-top: auto;
+    margin-bottom: 40px;
+    position: relative;
 }
 
 .btn-back {
     width: 300px;
     height: 100px;
-    font-size: 36px;
-    font-weight: 700;
-    background-color: #171717;
-    color: #ffffff;
+    font-size: 34px;
+    font-weight: 600;
+    background-color: #4dabf7;
+    color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 550px;
+    box-shadow: 0 8px 15px rgba(77, 171, 247, 0.25);
+    transition: all 0.3s ease;
+    position: fixed;
+    bottom: 80px;
+    left: 80px;
+}
+
+.btn-back:hover {
+    transform: translateY(-5px);
+    background-color: #339af0;
+    box-shadow: 0 12px 20px rgba(77, 171, 247, 0.35);
 }
 
 .keypad-container {
-    margin-top: 120px;
-    margin-right: 300px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.keypad-display-wrapper {
+    width: 540px;
+    margin-bottom: 40px;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.keypad-display-wrapper {
-    width: 540px;
-    margin-bottom: 20px;
-}
-
 .keypad-display {
     font-size: 48px;
-    height: 40px;
+    height: 60px;
     display: flex;
     align-items: center;
     font-weight: 500;
-    color: #000;
+    color: #343a40;
     background: none;
     border: none;
     padding: 0;
     margin-bottom: 10px;
-    margin-left: 30px;
+    letter-spacing: 4px;
+    width: 100%;
 }
 
 .divider-line {
     height: 2px;
-    background-color: #000000;
-    width: 580px;
+    background: linear-gradient(90deg, #74c0fc, #4dabf7);
+    width: 540px;
     margin: 0;
-    margin-left: 20px;
+    border-radius: 2px;
 }
 
 .keypad {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    column-gap: 100px;
-    row-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 40px;
+    row-gap: 25px;
+    margin-top: 20px;
 }
 
 .keypad button {
-    width: 180px;
-    height: 100px;
-    font-size: 48px;
-    font-weight: 500;
-    background-color: #ffffff;
-    border-radius: 8px;
+    width: 150px;
+    height: 90px;
+    font-size: 42px;
+    font-weight: 600;
+    background-color: white;
+    border-radius: 16px;
     cursor: pointer;
-    border: 1px solid #000000;
+    border: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+    color: #343a40;
+}
+
+.keypad button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.keypad button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn-fixed {
     width: 300px;
     height: 100px;
-    font-size: 36px;
-    font-weight: 700;
-    background-color: #ffffff;
-    color: #000000;
-    border: 3px solid #000000;
-    border-radius: 8px;
+    font-size: 34px;
+    font-weight: 600;
+    background-color: #ffd43b;
+    color: #343a40;
+    border: none;
+    border-radius: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 130px;
-    right: 100px;
+    bottom: 80px;
+    right: 80px;
     z-index: 1000;
+    box-shadow: 0 8px 15px rgba(255, 212, 59, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-fixed:hover {
+    transform: translateY(-5px);
+    background-color: #fcc419;
+    box-shadow: 0 12px 20px rgba(255, 212, 59, 0.35);
 }

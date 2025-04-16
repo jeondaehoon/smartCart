@@ -9,65 +9,22 @@
 </head>
 <body>
 <div class="container">
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="검색어를 입력하세요">
-        <span class="clear-button">✕</span>
-    </div>
     <div class="flex-container">
         <div class="main-content">
             <!-- 카테고리 섹션 -->
-            <div class="category-section">
-                <button class="category-button active">우유</button>
-                <button class="category-button">과일</button>
-                <button class="category-button">채소</button>
-                <button class="category-button">정육</button>
-                <button class="category-button">생수</button>
-                <button class="category-button">음료</button>
-            </div>
-
+            <form id="categoryList">
+                <div class="category-section" id="category-container">
+                    <!-- 카테고리 버튼들이 여기에 동적으로 추가-->
+                </div>
+            </form>
             <!-- 상품 섹션 -->
             <div class="product-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+                    <span class="clear-button">✕</span>
+                </div>
                 <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-name">서울우유</div>
-                        <div class="product-price">3,000원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">매일우유</div>
-                        <div class="product-price">2,800원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">연세우유</div>
-                        <div class="product-price">2,900원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">파스퇴르</div>
-                        <div class="product-price">3,200원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">건국우유</div>
-                        <div class="product-price">3,100원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">남양우유</div>
-                        <div class="product-price">3,000원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">바나나우유</div>
-                        <div class="product-price">1,500원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">초코우유</div>
-                        <div class="product-price">1,500원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">딸기우유</div>
-                        <div class="product-price">1,500원</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-name">저지방우유</div>
-                        <div class="product-price">3,500원</div>
-                    </div>
+                    <!-- 상품들이 여기에 동적으로 추가됩니다 -->
                 </div>
             </div>
 
@@ -75,46 +32,11 @@
             <div class="cart-section">
                 <h2 class="cart-title">장바구니</h2>
                 <div class="cart-items">
-                    <div class="cart-item">
-                        <span>서울우유</span>
-                        <span>3,000원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>매일우유</span>
-                        <span>2,800원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>연세우유</span>
-                        <span>2,900원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>파스퇴르우유</span>
-                        <span>3,200원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>건국우유</span>
-                        <span>3,100원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>남양우유</span>
-                        <span>3,000원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>바나나우유</span>
-                        <span>1,500원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>초코우유</span>
-                        <span>1,500원</span>
-                    </div>
-                    <div class="cart-item">
-                        <span>딸기우유</span>
-                        <span>1,500원</span>
-                    </div>
+                    <!-- 장바구니 아이템들이 여기에 동적으로 추가됩니다 -->
                 </div>
                 <div class="cart-footer">
                     <div class="cart-date">04월 11일</div>
-                    <div class="total-price">총결제금액: 57,500원</div>
+                    <div class="total-price">총결제금액: 0원</div>
                     <div class="payment-buttons">
                         <button class="payment-button card-payment">카드결제</button>
                         <button class="payment-button point-payment">포인트결제</button>
@@ -124,5 +46,123 @@
         </div>
     </div>
 </div>
+<script src="/assets/js/jquery-3.7.1.min.js"></script>
+<script src="/assets/js/common.js"></script>
+<script>
+    // 페이지 로드 시 실행되는 초기화 함수
+    $(document).ready(function() {
+        categoryList();
+    });
+
+    // 카테고리 목록을 서버에서 가져오는 함수
+    function categoryList() {
+        set_server('/smartCart_select/categorylist', setCategoryList);
+    }
+
+    // 서버에서 받은 카테고리 데이터로 버튼을 생성하는 함수
+    function setCategoryList(data) {
+        console.log(data);
+        var container = $('#category-container');
+        var str = '';
+        for(var i = 0; i < data.length; i++) {
+            var category = data[i];
+            str += '<input type="button" class="category-button" value="' + category.categoryName + '" onclick="selectCategory(this, \'' + category.categoryId + '\')">';
+        }
+        container.html(str);
+
+        // 첫 번째 버튼에 active 클래스 추가하고 해당 카테고리의 상품 표시
+        if (container.find('.category-button').length > 0) {
+            var firstButton = container.find('.category-button').first();
+            firstButton.addClass('active');
+            var firstCategoryId = firstButton.attr('onclick').match(/'([^']+)'/)[1];
+            getProductsByCategory(firstCategoryId);
+        }
+    }
+
+    // 카테고리 버튼 클릭 시 실행되는 함수
+    function selectCategory(button, categoryId) {
+        // 모든 버튼에서 active 클래스 제거
+        $('.category-button').removeClass('active');
+        // 클릭된 버튼에 active 클래스 추가
+        $(button).addClass('active');
+        // 해당 카테고리의 상품 가져오기
+        getProductsByCategory(categoryId);
+    }
+
+    // 카테고리 ID로 상품을 가져오는 함수
+    function getProductsByCategory(categoryId) {
+        set_server('/smartCart_select/products/' + categoryId, displayProducts);
+    }
+
+    // 상품 목록을 표시하는 함수
+    function displayProducts(products) {
+        var container = $('.product-grid');
+        var str = '';
+        for(var i = 0; i < products.length; i++) {
+            var product = products[i];
+            str += '<div class="product-card" onclick="addToCart(\'' + product.productId + '\', \'' + product.productName + '\', \'' + product.price + '\')">';
+            str += '<div class="product-name">' + product.productName + '</div>';
+            str += '<div class="product-price">' + comma(product.price) + '원</div>';
+            str += '</div>';
+        }
+        container.html(str);
+    }
+
+    // 장바구니에 상품 추가하는 함수
+    function addToCart(productId, productName, price) {
+        // 장바구니 아이템 생성
+        var cartItem = {
+            productId: productId,
+            productName: productName,
+            price: price,
+            quantity: 1
+        };
+
+        // 장바구니에 아이템 추가
+        var cartItems = $('.cart-items');
+        var existingItem = cartItems.find('[data-product-id="' + productId + '"]');
+
+        if (existingItem.length > 0) {
+            // 이미 있는 상품이면 수량 증가
+            var quantityElement = existingItem.find('.item-quantity');
+            var currentQuantity = parseInt(quantityElement.text());
+            quantityElement.text(currentQuantity + 1);
+        } else {
+            // 새로운 상품이면 장바구니에 추가
+            var itemHtml = '<div class="cart-item" data-product-id="' + productId + '">';
+            itemHtml += '<div class="item-name">' + productName + '</div>';
+            itemHtml += '<div class="item-details">';
+            itemHtml += '<span class="item-quantity">1</span>';
+            itemHtml += '<span class="item-price">' + comma(price) + '원</span>';
+            itemHtml += '</div>';
+            itemHtml += '<button class="delete-button" onclick="removeFromCart(\'' + productId + '\')">✕</button>';
+            itemHtml += '</div>';
+
+            cartItems.append(itemHtml);
+        }
+
+        // 총 결제금액 업데이트
+        updateTotalPrice();
+    }
+
+    // 장바구니에서 상품 제거하는 함수
+    function removeFromCart(productId) {
+        var item = $('.cart-item[data-product-id="' + productId + '"]');
+        item.remove();
+        updateTotalPrice();
+    }
+
+    // 총 결제금액 업데이트 함수
+    function updateTotalPrice() {
+        var total = 0;
+        $('.cart-item').each(function() {
+            var quantity = parseInt($(this).find('.item-quantity').text());
+            var price = parseInt(uncomma($(this).find('.item-price').text().replace('원', '')));
+            total += quantity * price;
+        });
+
+        $('.total-price').text('총결제금액: ' + comma(total) + '원');
+    }
+</script>
 </body>
 </html>

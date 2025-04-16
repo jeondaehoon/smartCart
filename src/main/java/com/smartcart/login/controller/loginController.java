@@ -24,9 +24,9 @@ public class loginController {
 
     @RequestMapping("/smartCart_phonelogin")
     @ResponseBody
-    public boolean getLogin(@RequestParam String userPhone) throws Exception {
+    public boolean getLogin(@RequestParam String userId) throws Exception {
         UserVO vo = new UserVO();
-        vo.setUserId(userPhone);
+        vo.setUserId(userId);
 
         UserVO uvo = service.getLogin(vo);
         return uvo != null;

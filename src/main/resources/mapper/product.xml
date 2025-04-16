@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartcart.product.dao.selectDao">
+    <resultMap id="productResultMap" type="vo.productVO.ProductVO">
+        <result column="PRODUCT_ID" property="productId"/>
+        <result column="CATEGORY_ID" property="categoryId"/>
+        <result column="PRODUCT_NAME" property="productName"/>
+        <result column="PRICE" property="price"/>
+        <result column="IMAGE_URL" property="imageUrl"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="UPDATED_BY" property="updatedBy"/>
+        <result column="CREATED_AT" property="createdAt"/>
+        <result column="UPDATED_AT" property="updatedAt"/>
+        <result column="STATUS" property="status"/>
+    </resultMap>
+
+    <!-- 카테고리별 상품 조회 -->
+    <select id="getProductsByCategory" resultMap="productResultMap">
+        SELECT 
+            PRODUCT_ID,
+            CATEGORY_ID,
+            PRODUCT_NAME,
+            PRICE,
+            IMAGE_URL,
+            CREATED_BY,
+            UPDATED_BY,
+            CREATED_AT,
+            UPDATED_AT,
+            STATUS
+        FROM PRODUCT
+        WHERE CATEGORY_ID = #{categoryId}
+        AND STATUS = 'Y'
+        ORDER BY PRODUCT_ID
+    </select>
+
+</mapper>
+

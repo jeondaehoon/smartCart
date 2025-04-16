@@ -99,12 +99,12 @@
             url: '/smartCart_phonelogin',
             type: 'POST',
             data: {
-                userPhone: fullPhone
+                userId: fullPhone
             },
             success: function(response) {
                 if(response) {
                     // 로그인 성공 시 전화번호를 URL 파라미터로 전달
-                    window.location.href = '/smartCart_select?userPhone=' + encodeURIComponent(fullPhone);
+                    window.location.href = '/smartCart_select?userId=' + encodeURIComponent(fullPhone);
                 } else {
                     alert('로그인 실패');
                 }

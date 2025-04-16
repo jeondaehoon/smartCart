@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smartcart.product.dao.selectDao">
+
+    <resultMap id="categoryResultMap" type="vo.categoryVO.CategoryVO">
+        <result column="CATEGORY_ID" property="categoryId"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="UPDATED_BY" property="updatedBy"/>
+        <result column="CATEGORY_NAME" property="categoryName"/>
+        <result column="CREATED_AT" property="createdAt"/>
+        <result column="UPDATED_AT" property="updatedAt"/>
+        <result column="IS_ACTIVE" property="isActive"/>
+    </resultMap>
+    
+    <select id="categoryList" resultMap="categoryResultMap">
+        SELECT 
+            CATEGORY_ID,
+            CREATED_BY,
+            UPDATED_BY,
+            CATEGORY_NAME,
+            CREATED_AT,
+            UPDATED_AT,
+            IS_ACTIVE
+        FROM CATEGORY
+        WHERE IS_ACTIVE = 'Y'
+        ORDER BY CATEGORY_ID
+    </select>
+</mapper>

@@ -82,3 +82,24 @@ function getToday(){
  }
  
  
+
+function set_server(url, cbFunc) {
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "json",
+        success: function(data) {
+            if(data) {
+                cbFunc(data);
+            } else {
+                alert("오류가 발생하였습니다.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+            alert("오류가 발생하였습니다.");
+        }
+    });
+}
+ 
+ 

@@ -20,12 +20,16 @@
             <!-- 상품 섹션 -->
             <div class="product-section">
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+                    <input type="search" class="search-input" placeholder="검색어를 입력하세요" name="searchproduct" autofocus inputmode="search">
                     <span class="clear-button">✕</span>
                 </div>
                 <div class="product-grid">
                     <!-- 상품들이 여기에 동적으로 추가됩니다 -->
                 </div>
+                <button class="location-button" onclick="showLocation()">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="location-text">위치</span>
+                </button>
             </div>
 
             <!-- 장바구니 섹션 -->
@@ -52,6 +56,23 @@
     // 페이지 로드 시 실행되는 초기화 함수
     $(document).ready(function() {
         categoryList();
+
+        // 검색창 클릭 시 강제 포커스
+        $('.search-container').on('click', function() {
+            $('.search-input').focus();
+        });
+
+        // 검색어 입력 시 이벤트 처리
+        $('.search-input').on('input', function() {
+            const searchText = $(this).val().toLowerCase();
+            filterProducts(searchText);
+        });
+
+        // 검색창 초기화 버튼 클릭 이벤트
+        $('.clear-button').on('click', function() {
+            $('.search-input').val('').focus();
+            filterProducts('');
+        });
     });
 
     // 카테고리 목록을 서버에서 가져오는 함수
@@ -92,6 +113,19 @@
     // 카테고리 ID로 상품을 가져오는 함수
     function getProductsByCategory(categoryId) {
         set_server('/smartCart_select/products/' + categoryId, displayProducts);
+    }
+
+    // 상품 필터링 함수
+    function filterProducts(searchText) {
+        const productCards = $('.product-card');
+        productCards.each(function() {
+            const productName = $(this).find('.product-name').text().toLowerCase();
+            if (productName.includes(searchText)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     }
 
     // 상품 목록을 표시하는 함수
@@ -163,6 +197,7 @@
 
         $('.total-price').text('총결제금액: ' + comma(total) + '원');
     }
+
 </script>
 </body>
 </html>

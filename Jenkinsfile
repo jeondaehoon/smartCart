@@ -38,15 +38,16 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sshagent(credentials: ['ec2-ssh']) {
-                    sh '''
-                        ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "
+                sshagent(credentials: ['ubuntu']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST '
                             docker pull $IMAGE_NAME:$TAG &&
                             docker stop $CONTAINER_NAME || true &&
                             docker rm $CONTAINER_NAME || true &&
+                            fuser -k $PORT/tcp || true &&
                             docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME:$TAG
-                        "
-                    '''
+                        '
+                    """
                 }
             }
         }

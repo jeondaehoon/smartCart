@@ -5,10 +5,10 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Step 3: 빌드된 JAR 파일을 이미지에 복사
-COPY target/smartcart-0.0.1-SNAPSHOT.jar /app/smartcart.jar
+COPY target/smartCart-0.0.1-SNAPSHOT.jar /app/smartcart.jar
 
 # Step 4: 애플리케이션 실행
 ENTRYPOINT ["java", "-jar", "smartcart.jar"]
 
-# Step 5: 애플리케이션이 사용하는 포트11
+# Step 5: 애플리케이션이 사용하는 포트
 EXPOSE 8080

@@ -6,12 +6,12 @@ pipeline {
         TAG = 'latest'
     }
 
+    stages {
         stage('Git Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/jeondaehoon/smartCart.git'
             }
         }
-
 
         stage('Build with Maven') {
             steps {

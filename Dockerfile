@@ -10,5 +10,5 @@ COPY target/smartCart-0.0.1-SNAPSHOT.jar /app/smartcart.jar
 # Step 4: 애플리케이션 실행
 ENTRYPOINT ["java", "-jar", "smartcart.jar"]
 
-# Step 5: 애플리케이션이 사용하는 포트11
+# Step 5: 애플리케이션이 사용하는 포트2
 EXPOSE 8080

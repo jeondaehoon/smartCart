@@ -6,12 +6,12 @@ pipeline {
         TAG = 'latest'
     }
 
-    stages {
         stage('Git Checkout') {
             steps {
-                git 'https://github.com/jeondaehoon/smartCart.git'
+                git branch: 'main', url: 'https://github.com/jeondaehoon/smartCart.git'
             }
         }
+
 
         stage('Build with Maven') {
             steps {
@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('🚀 Deploy to EC2') {
+        stage('Deploy to EC2') {
             steps {
                 sshagent (credentials: ['ec2-ssh']) {
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@<EC2-IP> "docker pull $IMAGE_NAME:$TAG && cd /home/ubuntu/smartcart && docker-compose down && docker-compose up -d"'

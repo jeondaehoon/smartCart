@@ -4,6 +4,10 @@ pipeline {
     environment {
         IMAGE_NAME = 'ascdee123/smartcart'
         TAG = 'latest'
+        EC2_USER = 'ubuntu'
+        EC2_HOST = '3.106.239.185'
+        CONTAINER_NAME = 'smartcart'
+        PORT = '8080'
     }
 
     stages {
@@ -34,8 +38,15 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sshagent (credentials: ['ec2-ssh']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@<EC2-IP> "docker pull $IMAGE_NAME:$TAG && cd /home/ubuntu/smartcart && docker-compose down && docker-compose up -d"'
+                sshagent(credentials: ['ubuntu']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "
+                            docker pull $IMAGE_NAME:$TAG &&
+                            docker stop $CONTAINER_NAME || true &&
+                            docker rm $CONTAINER_NAME || true &&
+                            docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME:$TAG
+                        "
+                    '''
                 }
             }
         }

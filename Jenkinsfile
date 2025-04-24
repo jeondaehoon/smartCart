@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = 'ascdee123/smartcart'
         TAG = 'latest'
         EC2_USER = 'ubuntu'
-        EC2_HOST = '3.106.239.185'
+        EC2_HOST = '54.180.109.19'
         CONTAINER_NAME = 'smartcart'
         PORT = '8080'
     }

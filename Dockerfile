@@ -1,5 +1,5 @@
 # Step 1: OpenJDK 17 이미지를 기반으로 사용
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jre
 
 # Step 2: 작업 디렉토리 생성
 WORKDIR /app
@@ -10,5 +10,5 @@ COPY target/smartCart-0.0.1-SNAPSHOT.jar /app/smartcart.jar
 # Step 4: 애플리케이션 실행
 ENTRYPOINT ["java", "-jar", "smartcart.jar"]
 
-# Step 5: 애플리케이션이 사용하는 포트 노출
+# Step 5: 애플리케이션이 사용하는 포트5
 EXPOSE 8080

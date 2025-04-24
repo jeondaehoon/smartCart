@@ -7,7 +7,7 @@ pipeline {
         EC2_USER = 'ubuntu'
         EC2_HOST = '54.180.109.19'
         CONTAINER_NAME = 'smartcart'
-        PORT = '8081'
+        PORT = '8082'
     }
 
     stages {

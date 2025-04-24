@@ -1,5 +1,5 @@
 # Step 1: OpenJDK 17 이미지를 기반으로 사용
-FROM openjdk:17-jre
+FROM openjdk:17
 
 # Step 2: 작업 디렉토리 생성
 WORKDIR /app

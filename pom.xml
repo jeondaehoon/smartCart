@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -46,11 +46,14 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
+
+		<!-- 오라클 관련 의존성 주석처리 -->
+		<!-- <dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc11</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -73,8 +76,14 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- 추가 항목 -->
-		<!-- 톰켓-->
+		<!-- MariaDB 의존성 추가 -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>2.7.4</version>
+		</dependency>
+
+		<!-- 톰켓 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId> tomcat-embed-jasper </artifactId>
@@ -84,8 +93,6 @@
 			<artifactId> tomcat-catalina </artifactId>
 			<version>9.0.45</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>commons-io</groupId>

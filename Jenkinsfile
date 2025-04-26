@@ -27,10 +27,11 @@ pipeline {
         stage('Build & Push Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t $IMAGE_NAME:$TAG .'
+                    def tag = "${env.BUILD_NUMBER}-${env.GIT_COMMIT.take(7)}"
+                    sh "docker build -t $IMAGE_NAME:${tag} ."
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker push $IMAGE_NAME:$TAG'
+                        sh "docker push $IMAGE_NAME:${tag}"
                     }
                 }
             }
@@ -41,15 +42,27 @@ pipeline {
                 sshagent(credentials: ['ec2-ssh']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST '
-                            docker pull $IMAGE_NAME:$TAG &&
+                            docker pull $IMAGE_NAME:${tag} &&
                             docker stop $CONTAINER_NAME || true &&
                             docker rm $CONTAINER_NAME || true &&
-                            fuser -k $PORT/tcp || true &&
-                            docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME:$TAG
+                            docker run -d -p $PORT:$PORT --name $CONTAINER_NAME $IMAGE_NAME:${tag}
                         '
                     """
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+            // Slack 알림 등을 추가 가능
         }
     }
 }

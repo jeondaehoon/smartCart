@@ -19,7 +19,7 @@
 # Step 1: Tomcat 9 이미지 사용
 FROM tomcat:9.0
 
-# Step 2: 기존 Tomcat 웹 애플리케이션 제거 (optional)
+# Step 2: 기존 Tomcat 웹 애플리케이션 제거
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Step 3: WAR 파일을 Tomcat의 webapps 폴더에 복사
@@ -31,5 +31,5 @@ RUN sed -i 's/port="8080"/port="8182"/g' /usr/local/tomcat/conf/server.xml
 # Step 5: 포트 8182 오픈
 EXPOSE 8182
 
-# Step 6: Tomcat 실행 (컨테이너 시작 시 자동으로 Tomcat 실행)
+# Step 6: Tomcat 실행
 CMD ["catalina.sh", "run"]

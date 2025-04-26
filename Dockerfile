@@ -1,5 +1,5 @@
-# Step 1: Tomcat 9 이미지 사용
-FROM tomcat:9.0
+# Step 1: Tomcat 10.1.40 이미지 사용
+FROM tomcat:10.1.40
 
 # Step 2: 기존 Tomcat 웹 애플리케이션 제거
 RUN rm -rf /usr/local/tomcat/webapps/*
@@ -13,5 +13,5 @@ RUN sed -i 's/port="8080"/port="8182"/g' /usr/local/tomcat/conf/server.xml
 # Step 5: 포트 8182 오픈
 EXPOSE 8182
 
-# Step 6: 사용자 정의 실행 명령22
+# Step 6: 사용자 정의 실행 명령
 CMD ["sh", "-c", "echo 'Running WAR file' && catalina.sh run"]

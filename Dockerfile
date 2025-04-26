@@ -16,7 +16,7 @@
 
 
 # Tomcat 9을 사용하여 WAR 기반으로 애플리케이션 실행clea
-# Step 1: Tomcat 9 이미지 사용
+# Step 1: Tomcat 9 이미지 사용11
 FROM tomcat:9.0
 
 # Step 2: 기존 Tomcat 웹 애플리케이션 제거

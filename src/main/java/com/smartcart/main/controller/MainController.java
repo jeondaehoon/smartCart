@@ -10,4 +10,5 @@ public class MainController {
     public String smartCart_main() throws Exception{
         return "main/startpage";
     }
+    
 }

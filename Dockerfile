@@ -13,5 +13,5 @@ RUN sed -i 's/port="8080"/port="8182"/g' /usr/local/tomcat/conf/server.xml
 # Step 5: 포트 8182 오픈
 EXPOSE 8182
 
-# Step 6: Tomcat 실행
-CMD ["catalina.sh", "run"]
+# Step 6: 사용자 정의 실행 명령
+CMD ["sh", "-c", "echo 'Running WAR file' && catalina.sh run"]

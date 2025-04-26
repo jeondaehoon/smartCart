@@ -26,9 +26,12 @@
 		<tag/>
 		<url/>
 	</scm>
+
 	<properties>
 		<java.version>17</java.version>
+		<packaging>war</packaging> <!-- WAR 파일로 패키징 지정 -->
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,10 +52,10 @@
 
 		<!-- 오라클 관련 의존성 주석처리 -->
 		<!-- <dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc11</artifactId>
-			<scope>runtime</scope>
-		</dependency> -->
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <scope>runtime</scope>
+        </dependency> -->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -83,14 +86,14 @@
 			<version>2.7.4</version>
 		</dependency>
 
-		<!-- 톰켓 -->
+		<!-- 톰캣 관련 의존성 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId> tomcat-embed-jasper </artifactId>
+			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
-			<artifactId> tomcat-catalina </artifactId>
+			<artifactId>tomcat-catalina</artifactId>
 			<version>9.0.45</version>
 		</dependency>
 
@@ -169,5 +172,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
